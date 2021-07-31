@@ -43,14 +43,22 @@ birthday.addEventListener("change",function(){
 const validateEmail  = () =>{
     let email = document.getElementsByName("email")[0];
     let errorSpan = document.querySelector("#errorSpan");
-    console.log(errorSpan);
+    // console.log(errorSpan);
+
     const regexPattern = /\S+\@+\S+\.+\S/;
-    if (!regexPattern.test(email.value)){
-        errorSpan.innerHTML = "Invalid Email Adress";
-        errorSpan.style.color = "red";
+    if (email.value == "" || email.value.length == 0) {
+        errorSpan.style.visibility = "hidden";
     }
     else{
-        errorSpan.innerHTML = "Your Email is valid";
-        errorSpan.style.color = "green";
+        errorSpan.style.visibility = "visible";
+        if (!regexPattern.test(email.value)){
+            errorSpan.innerHTML = "Invalid Email Adress";
+            errorSpan.style.color = "red";
+        }
+        else{
+            errorSpan.innerHTML = "Your Email is valid";
+            errorSpan.style.color = "green";
+        }
+        
     }
 }
